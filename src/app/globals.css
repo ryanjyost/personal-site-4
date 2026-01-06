@@ -111,7 +111,7 @@ a.text-teal-link {
 /* Markdown content styles */
 
 .markdown-main-title {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .markdown-content {
@@ -153,12 +153,18 @@ a.text-teal-link {
 }
 
 .markdown-content a {
-  color: var(--link);
+  color: var(--foreground);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--link);
+  opacity: 1;
+  /* transition: opacity 0.2s ease; */
 }
 
 .markdown-content a:hover {
-  text-decoration: none;
+  opacity: 1;
+  text-decoration-thickness: 2px;
 }
 
 .markdown-content code {

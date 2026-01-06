@@ -13,6 +13,7 @@ export default defineConfig({
         .object({
           title: s.string().max(99), // Zod primitive type
           slug: s.path(), // auto generate slug from file path
+          date: s.string(),
           description: s.string(),
           content: s.markdown(), // transform markdown to html
         })
