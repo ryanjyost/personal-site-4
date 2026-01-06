@@ -21,6 +21,15 @@ export default function BlogPage() {
         <Heading as="h1" size="8">
           Blog
         </Heading>
+        <Box className="mt-3">
+          <Text size="3" className="opacity-90">
+            ... or{" "}
+            <Link href="/#technical-writing" className="text-teal-link">
+              read my published tech writing and tutorials
+            </Link>
+            .
+          </Text>
+        </Box>
       </Box>
 
       {sortedPosts.length === 0 ? (
