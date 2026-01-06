@@ -1,3 +1,4 @@
+"use client";
 import {
   FileTextIcon,
   GitHubLogoIcon,
@@ -8,6 +9,13 @@ import { Box, Button, Code, Flex, Link, Text } from "@radix-ui/themes";
 import { useMemo } from "react";
 
 export function TableOfContents() {
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   const mainButtons = useMemo(() => {
     return [
       {
@@ -89,16 +97,16 @@ export function TableOfContents() {
       <Box className="h-14" />
 
       <Flex align="center" gap="2" className="flex-wrap ml-1">
-        <Text size="6" className="pl-1">
+        <Text size="8" className="pl-1">
           <strong>{`Hi, I'm Ryan.`}</strong>{" "}
           {/* <strong className="opacity-80">{`I build software for work and fun.`}</strong> */}
         </Text>
       </Flex>
 
-      <Flex className="h-1" />
+      <Flex className="h-2" />
 
-      <Flex align="center" gap="2" className="flex-wrap ml-1">
-        <Text size="6" className="pl-1">
+      <Flex align="center" gap="3" className="flex-wrap ml-1">
+        <Text size="7" className="pl-1">
           <strong className="opacity-80">{`I build software for work and fun.`}</strong>
         </Text>
         <Code
@@ -112,7 +120,12 @@ export function TableOfContents() {
 
       <Flex gap="4" className="flex-wrap ml-2">
         {inPageLinks.map((link) => (
-          <Link key={link.label} href={link.href} className="cursor-pointer">
+          <Link
+            key={link.label}
+            href={link.href}
+            className="cursor-pointer"
+            onClick={(e) => handleAnchorClick(e, link.href)}
+          >
             {link.label}
           </Link>
         ))}

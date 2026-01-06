@@ -1,10 +1,10 @@
 import { AboutMe } from "@/components/AboutMe";
 import { Projects } from "@/components/Projects";
 import { SectionTitle } from "@/components/SectionTitle";
+import { Skills } from "@/components/Skills";
 import { TableOfContents } from "@/components/TableOfContents";
 import { Writing } from "@/components/Writing";
 import { Box, Flex } from "@radix-ui/themes";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -28,6 +28,11 @@ export default function Home() {
 
         <SectionTitle id="technical-writing" title="Technical Writing" />
         <Writing />
+
+        <Box className="h-[100px]" />
+
+        <SectionTitle id="skills-and-tech" title="Skills & Tech" />
+        <Skills />
       </Flex>
     </main>
   );

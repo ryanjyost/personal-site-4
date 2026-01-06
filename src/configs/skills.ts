@@ -1,9 +1,66 @@
-export const skills = {
-  general: [],
-  frontend: [],
-  backend: [],
-  database: [],
-  devops: [],
-  testing: [],
-  other: [],
-};
+export const skills = [
+  {
+    title: "Frontend",
+    skills: [
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "Component Systems (Mantine, Radix UI)",
+      "Accessibility",
+      "React Native",
+      "Responsive Design",
+      "Real-time Data (WebSockets)",
+      "Redux/Zustand",
+      "Next.js",
+      "Data Visualization/Charts",
+      "React Query",
+      "Data Tables",
+      "Performance Optimization (Profiling, Virtualization, Memoization)",
+      "Form Systems",
+    ],
+  },
+  {
+    title: "Backend/Data",
+    skills: [
+      "Node.js",
+      "NoSQL",
+      "Postgres/MySQL",
+      "Caching",
+      "Puppeteer",
+      "API Design",
+      "Auth",
+      "Audio/Video",
+    ],
+  },
+  {
+    title: "AI/Cloud",
+    skills: [
+      "Agentic Systems",
+      "LLM Orchestration",
+      "Token/Latency Optimization",
+      "GCP",
+      "Firebase",
+      "AWS",
+      "IAM",
+    ],
+  },
+  {
+    title: "System Design",
+    skills: [
+      "Distributed Systems",
+      "Microservices",
+      "Scalability",
+      "Cost/Performance Optimization",
+    ],
+  },
+  {
+    title: "Product & Quality",
+    skills: [
+      "UX Design",
+      "Rapid Prototyping",
+      "Technical Writing",
+      "Roadmapping",
+      "Testing (Jest, Playwright)",
+    ],
+  },
+];

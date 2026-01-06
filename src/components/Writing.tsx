@@ -1,11 +1,7 @@
 "use client";
 import { Button, Flex, Link, Text } from "@radix-ui/themes";
 import { writing } from "@/configs/writing";
-import {
-  ArrowTopRightIcon,
-  Pencil1Icon,
-  Pencil2Icon,
-} from "@radix-ui/react-icons";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import GitHubButton from "react-github-btn";
 
 export function Writing() {
