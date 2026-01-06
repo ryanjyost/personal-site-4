@@ -28,7 +28,14 @@ export default function RootLayout({
         <ThemeProvider>
           <Flex direction="column" className="bg-background min-h-screen">
             <Header />
-            <Flex className="max-w-5xl mx-auto px-6 w-full pt-16">{children}</Flex>
+            <Flex className="max-w-5xl mx-auto px-6 w-full pt-16">
+              {children}
+            </Flex>
+            <Flex justify="center" className="w-full py-4">
+              <Text className="text-foreground/50" size="1">
+                All rights reserved © Ryan J. Yost {new Date().getFullYear()}
+              </Text>
+            </Flex>
           </Flex>
         </ThemeProvider>
       </body>

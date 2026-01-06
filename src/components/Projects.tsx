@@ -52,7 +52,7 @@ function Project({ project }: { project: (typeof projects)[number] }) {
           {project.desc}
         </Text>
         <Flex className="h-1" />
-        <Flex gap="4">
+        <Flex gap="4" align="start">
           {project.github && (
             project.showGithubButton ? (
               <GitHubButton

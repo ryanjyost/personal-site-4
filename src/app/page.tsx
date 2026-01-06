@@ -1,12 +1,23 @@
+"use client";
+
 import { AboutMe } from "@/components/AboutMe";
 import { Projects } from "@/components/Projects";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Skills } from "@/components/Skills";
 import { TableOfContents } from "@/components/TableOfContents";
 import { Writing } from "@/components/Writing";
-import { Box, Flex } from "@radix-ui/themes";
+import { ArrowUpIcon } from "@radix-ui/react-icons";
+import { Box, Button, Flex } from "@radix-ui/themes";
+import { useCallback } from "react";
 
 export default function Home() {
+  const scrollToTop = useCallback(() => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <main className="bg-background max-w-full">
       <Flex direction="column" className="pb-[200px] max-w-full">
@@ -32,7 +43,16 @@ export default function Home() {
         <Box className="h-[100px]" />
 
         <SectionTitle id="skills-and-tech" title="Skills & Tech" />
+        <Box className="h-4" />
         <Skills />
+
+        <Box className="h-[100px]" />
+
+        <Flex justify="center">
+          <Button variant="ghost" onClick={scrollToTop}>
+            Scroll back to top <ArrowUpIcon />
+          </Button>
+        </Flex>
       </Flex>
     </main>
   );

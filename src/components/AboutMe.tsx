@@ -54,7 +54,7 @@ export function AboutMe() {
         <li>
           <Link
             href="#skills-and-tech"
-            className="text-teal-900 dark:text-teal-400"
+            className="text-teal-link"
           >
             <strong>...using</strong> a wide range of technologies, frameworks,
             and tools.

@@ -4,31 +4,43 @@ import {
   GitHubLogoIcon,
   LinkedInLogoIcon,
   EnvelopeClosedIcon,
+  CheckIcon,
 } from "@radix-ui/react-icons";
 import { Box, Button, Code, Flex, Link, Text } from "@radix-ui/themes";
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 export function TableOfContents() {
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+
+  const handleCopyEmail = useCallback(() => {
+    navigator.clipboard.writeText("ryanjyost@gmail.com");
+    setIsCopied(true);
+
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  }, []);
+
   const mainButtons = useMemo(() => {
     return [
       {
-        label: "Download Resume",
+        label: "Download resume",
         icon: FileTextIcon,
-        href: "/resume.pdf",
+        href: "/Yost_Ryan_Resume.pdf",
         target: "_blank",
       },
-      {
-        label: "ryanjyost@gmail.com",
-        icon: EnvelopeClosedIcon,
-        href: "mailto:ryanjyost@gmail.com",
-      },
+
       {
         label: "Connect on LinkedIn",
         icon: LinkedInLogoIcon,
@@ -41,8 +53,14 @@ export function TableOfContents() {
         href: "https://github.com/ryanjyost",
         target: "_blank",
       },
+      {
+        label: isCopied ? "Copied!" : "Copy my email",
+        icon: isCopied ? CheckIcon : EnvelopeClosedIcon,
+        // href: "mailto:ryanjyost@gmail.com",
+        onClick: handleCopyEmail,
+      },
     ];
-  }, []);
+  }, [handleCopyEmail, isCopied]);
 
   const inPageLinks = useMemo(() => {
     return [
@@ -62,38 +80,55 @@ export function TableOfContents() {
         label: "Skills & Tech",
         href: "#skills-and-tech",
       },
-      // {
-      //   label: "Outside of Work",
-      //   href: "#outside-of-work",
-      // },
     ];
   }, []);
 
-  return (
-    <Flex direction="column" gap="0" style={{ marginLeft: -6 }}>
+  const MainButtons = useMemo(() => {
+    const buttonColor = "teal";
+    return (
       <Flex gap="3" className="flex-wrap">
-        {mainButtons.map((button) => (
-          <Link
-            key={button.label}
-            href={button.href}
-            target={button.target}
-            rel="noopener noreferrer"
-            className="cursor-pointer"
-          >
+        {mainButtons.map((button) =>
+          button.href ? (
+            <Link
+              key={button.label}
+              href={button.href}
+              target={button.target}
+              rel="noopener noreferrer"
+              className="cursor-pointer"
+            >
+              <Button
+                variant="surface"
+                size="2"
+                radius="full"
+                className="cursor-pointer"
+                color={buttonColor}
+              >
+                <button.icon />
+                {button.label}
+              </Button>
+            </Link>
+          ) : (
             <Button
-              variant="soft"
+              key={button.label}
+              variant="surface"
               size="2"
               radius="full"
-              className="cursor-pointer"
-              color="gray"
+              className="cursor-pointer text-foreground!"
+              color={buttonColor}
+              onClick={button.onClick}
             >
               <button.icon />
               {button.label}
             </Button>
-          </Link>
-        ))}
+          )
+        )}
       </Flex>
+    );
+  }, [mainButtons]);
 
+  return (
+    <Flex direction="column" gap="0" style={{ marginLeft: -6 }}>
+      {MainButtons}
       <Box className="h-14" />
 
       <Flex align="center" gap="2" className="flex-wrap ml-1">
@@ -116,7 +151,7 @@ export function TableOfContents() {
         >{`// most often both`}</Code>
       </Flex>
 
-      <Box className="h-4" />
+      <Box className="h-3" />
 
       <Flex gap="4" className="flex-wrap ml-2">
         {inPageLinks.map((link) => (

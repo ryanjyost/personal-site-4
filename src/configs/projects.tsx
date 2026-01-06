@@ -14,7 +14,21 @@ export const projects = [
     preview: "advize",
     link: "https://demo.advizehub.com/",
   },
-
+  {
+    name: "Muni Bond AI",
+    desc: "Automated data extraction, analysis and chat for large, complex municipal bond issuance documents.",
+    preview: "muni-bond-ai",
+    github: "https://github.com/ryanjyost/ux-review",
+    link: "https://munibondai.com/report/example",
+  },
+  {
+    name: "ai-prompt-organizer",
+    desc: "Super simple and scalable AI prompt management tools",
+    preview: "ai-prompt-organizer",
+    github: "https://github.com/ryanjyost/ai-prompt-organizer#readme",
+    npm: "https://www.npmjs.com/package/ai-prompt-organizer",
+    link: "https://www.npmjs.com/package/ai-prompt-organizer",
+  },
   {
     name: "ScriptsFlix",
     desc: `Browse TV and Movie scripts like you're on Netflix.`,
@@ -44,7 +58,7 @@ export const projects = [
 
   {
     name: "Movie Medium",
-    desc: `A game where you predict the Rotten Tomatoes scores of upcoming movies. Play with friends on GroupMe or coworkers in Slack (available in the Slack app marketplace).`,
+    desc: `A game where you predict the Rotten Tomatoes scores of upcoming movies. Play with friends on GroupMe or coworkers in Slack (formerly available in the Slack app marketplace).`,
     preview: "moviemedium",
     // skills: ["React", "Node.js", "Socket.io", "AWS"],
     github: "https://github.com/ryanjyost/movie-api",
