@@ -2,25 +2,101 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1f1f1f;
+  --border: var(--color-gray-200);
+}
+
+/* Dark mode - class-based (synced with ThemeProvider) */
+.dark {
+  --background: #1f1f1f;
+  --foreground: #ffffff;
+  --border: var(--color-gray-700);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Custom breakpoints - easy to use with Tailwind utilities */
+  /* Usage: hidden mobile:block (hide on mobile, show on tablet+) */
+  --breakpoint-mobile: 640px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1280px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Tailwind default breakpoints are:
+   sm: 640px   (mobile -> tablet)
+   md: 768px   (tablet -> desktop)
+   lg: 1024px  (desktop -> wide)
+   xl: 1280px  (wide screens)
+   
+   Usage examples:
+   - hidden md:block (hide on mobile/tablet, show on desktop+)
+   - hidden sm:block (hide on mobile, show on tablet+)
+   - block md:hidden (show on mobile only)
+*/
+
+/* Override Radix UI teal accent colors with custom #43B2AA */
+[data-accent-color="teal"] {
+  --accent-1: #e0f7f5;
+  --accent-2: #b3eae5;
+  --accent-3: #80dcd4;
+  --accent-4: #4dcdc3;
+  --accent-5: #26c0b5;
+  --accent-6: #43b2aa;
+  --accent-7: #00a69a;
+  --accent-8: #00998d;
+  --accent-9: #43b2aa;
+  --accent-10: #3a9b95;
+  --accent-11: #2d7a75;
+  --accent-12: #1f5d57;
+}
+
+/* Dark mode adjustments for better contrast */
+.radix-themes.dark [data-accent-color="teal"] {
+  --accent-9: #43b2aa;
+  --accent-10: #4dc4bc;
+  --accent-11: #5dd5cd;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Ensure pointer cursor on buttons inside links */
+a[href] button,
+a[href] > button,
+a[href] [data-radix-collection-item] {
+  cursor: pointer !important;
+  color: var(--foreground) !important;
+}
+
+button {
+  cursor: pointer !important;
+}
+
+ul {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+li {
+  color: var(--foreground);
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--foreground);
 }
