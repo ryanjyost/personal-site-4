@@ -37,7 +37,7 @@ export function TableOfContents() {
       {
         label: "Download resume",
         icon: FileTextIcon,
-        href: "/Yost_Ryan_Resume.pdf",
+        href: "/Ryan_J_Yost_Resume.pdf",
         target: "_blank",
       },
 
